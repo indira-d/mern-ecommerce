@@ -2,39 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3fe17a5e-b529-46d5-bdad-88ef1a1a9466" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/App.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/Announcement.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/Categories.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/CategoryItem.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/Footer.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/Navbar.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/NewsLetter.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/Product.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/Products.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/Slider.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/data.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/index.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/pages/Homepage.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/pages/Product.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/pages/ProductList.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client" beforeDir="false" afterPath="$PROJECT_DIR$/client" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/public/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/public/logo192.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/public/logo512.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.test.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/index.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/logo.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/reportWebVitals.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/setupTests.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +48,7 @@
       <updated>1670401959211</updated>
       <workItem from="1670401960867" duration="20191000" />
       <workItem from="1670572219813" duration="659000" />
-      <workItem from="1670577466360" duration="5042000" />
+      <workItem from="1670577466360" duration="16017000" />
     </task>
     <servers />
   </component>
@@ -108,5 +76,16 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="484" y="354" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.900@0.0.1440.900" timestamp="1670584197190" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/client/src/pages/Cart.jsx</url>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
