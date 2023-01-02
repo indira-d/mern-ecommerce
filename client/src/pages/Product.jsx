@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components'
 import Navbar from "../components/Navbar";
 import Announcement from "../components/Announcement";
@@ -6,6 +6,10 @@ import NewsLetter from "../components/NewsLetter";
 import Footer from "../components/Footer";
 import {RemoveOutlined, Add} from "@material-ui/icons";
 import {mobile} from "../responsive";
+import {useLocation} from "react-router";
+import {publicRequest} from "../requestMethod";
+import {useDispatch} from "react-redux";
+import {addProduct} from "../redux/cartRedux";
 
 
 const Container = styled.div`
@@ -61,7 +65,7 @@ const FilterColor = styled.div`
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background-color: ${props => props.color};
+  background-color: ${props => props?.color};
   margin: 0 5px;
   cursor: pointer;
 `
@@ -70,7 +74,7 @@ const FilterSize = styled.select`
   padding: 5px;
 `
 const FilterSizeOption = styled.option`
-
+     value: ${props => props?.size};
 `
 const AddContainer = styled.div`
   display: flex;
@@ -105,58 +109,89 @@ const Button = styled.button`
     &:hover{
       background-color: teal;
       color: white;
-     
     }
 `
 
+const Product = (props) => {
+    const location = useLocation()
+    const id = location.pathname.split('/')[2]
+    const [product, setProduct] = useState({})
+    const [quantity, setQuantity] = useState(1)
+    const [color, setColor] = useState('')
+    const [size, setSize] = useState(1)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        const getProduct = async () => {
+            try{
+                const res = await publicRequest.get("/products/find/" + id)
+                setProduct(res.data)
+            }catch (e) {
+
+            }
+        }
+        getProduct()
+    }, [id])
+
+    console.log('product', product)
+
+    const handleQuantity = (type) =>{
+        if(type === 'dec'){
+           quantity > 1 && setQuantity(quantity - 1)
+        }else {
+            setQuantity(quantity + 1)
+        }
+    }
+
+    const handleClick = () => {
+        //update cart
+        dispatch(addProduct({...product, quantity, color, size }))
+    }
 
 
-const Product = (props) => (
-    <Container>
+    return (
+        <Container>
         <Navbar/>
-        <Announcement />
+        <Announcement/>
         <Wrapper>
             <ImgContainer>
-                <Image src='https://i.ibb.co/S6qMxwr/jean.jpg'/>
+                <Image src={product?.img}/>
             </ImgContainer>
             <InfoContainer>
-                <Title>
-                    Denim Jumpsuit
+                <Title>{product?.title}
                 </Title>
-                <Desc>The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.</Desc>
-                <Price>$20</Price>
+                <Desc>{product?.description}</Desc>
+                <Price>${product?.price}</Price>
                 <FilterContainer>
-                   <Filter>
-                       <FilterTitle>Color</FilterTitle>
-                       <FilterColor color='black'/>
-                       <FilterColor color='darkblue'/>
-                       <FilterColor color='gray'/>
-                   </Filter>
+                    <Filter>
+                        <FilterTitle>Color</FilterTitle>
+                     {/*{product?.color?.map(it =>*/}
+                     {/*       <FilterColor color={it} key={it} onClick={() => setColor(it)} />)}*/}
+                    <FilterColor color={product?.color}/>
+                    </Filter>
                     <Filter>
                         <FilterTitle>Size</FilterTitle>
-                        <FilterSize>
-                            <FilterSizeOption>XS</FilterSizeOption>
-                            <FilterSizeOption>S</FilterSizeOption>
-                            <FilterSizeOption>M</FilterSizeOption>
-                            <FilterSizeOption>L</FilterSizeOption>
-                            <FilterSizeOption>XL</FilterSizeOption>
-                            <FilterSizeOption>XXL</FilterSizeOption>
+                        <FilterSize onChange={e => setSize(e.target.value)}>
+                            <FilterSizeOption size={product?.size}/>
+                            {/*{product?.size.map(it => <FilterSizeOption size={it} key={it} />)}*/}
                         </FilterSize>
                     </Filter>
                 </FilterContainer>
                 <AddContainer>
                     <AmountContainer>
-                        <RemoveOutlined />
-                        <Amount>1</Amount>
-                        <Add />
+                        <RemoveOutlined onClick={() => handleQuantity('dec')}/>
+                        <Amount>{quantity}</Amount>
+                        <Add onClick={() => handleQuantity('inc')}/>
                     </AmountContainer>
-                    <Button>ADD TO CART</Button>
+                    <Button onClick={handleClick}>ADD TO CART</Button>
                 </AddContainer>
             </InfoContainer>
         </Wrapper>
-        <NewsLetter />
-        <Footer />
+        <NewsLetter/>
+        <Footer/>
     </Container>
-);
+    )
+}
+
 
 export default Product;

@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import {Search, ShoppingCartOutlined} from "@material-ui/icons";
 import Badge from "@material-ui/core/Badge";
 import {mobile} from "../responsive";
+import {useSelector} from "react-redux";
+import {Link} from "react-router-dom";
 
 
 const Container = styled.div`
@@ -64,28 +66,33 @@ const MenuItem = styled.div`
 `
 
 
-const Navbar = (props) => (
-    <Container >
+const Navbar = (props) => {
+    const qty = useSelector(state => state.cart.quantity)
+
+    return <Container>
         <Wrapper>
             <Left>
                 <Language>EN</Language>
                 <SearchContainer>
                     <Input placeholder={'Search'}/>
-                    <Search style={{color: 'gray', fontSize: '16px'}} />
+                    <Search style={{color: 'gray', fontSize: '16px'}}/>
                 </SearchContainer>
             </Left>
             <Center><Logo>E-SHOP</Logo></Center>
             <Right>
                 <MenuItem>REGISTER</MenuItem>
                 <MenuItem>SIGN IN</MenuItem>
-                <MenuItem>
-                    <Badge badgeContent={4} color="primary">
-                        <ShoppingCartOutlined color="action" />
-                    </Badge>
-                </MenuItem>
+                <Link to={'/cart'}>
+                    <MenuItem>
+                        <Badge badgeContent={qty} color="primary">
+                            <ShoppingCartOutlined color="action"/>
+                        </Badge>
+                    </MenuItem>
+                </Link>
+
             </Right>
         </Wrapper>
     </Container>
-);
+};
 
 export default Navbar;
